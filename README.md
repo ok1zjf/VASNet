@@ -30,7 +30,7 @@ as well as VASNet pretrained models you can download by running the following co
 ./download.sh datasets_models_urls.txt
 ```
 You will need about 820MB space on your HDD. Datasets will be stored in ```./datasets``` 
-directory and models, with corresponding split files, in ```./data/models``` and ```./data/splits``` respectivelly.
+directory and models, with corresponding split files, in ```./data/models``` and ```./data/splits``` respectively.
 
 Original version of the datasets can be downloaded from 
 [http://www.eecs.qmul.ac.uk/~kz303/vsumm-reinforce/datasets.tar.gz](http://www.eecs.qmul.ac.uk/~kz303/vsumm-reinforce/datasets.tar.gz) 
@@ -84,7 +84,7 @@ The split file will be saved as ```./splits/summe_splits.json```
 
 ## Acknowledgement
 We would like to thank to [K. Zhou et al.](https://github.com/KaiyangZhou/pytorch-vsumm-reinforce) 
-and [K Zhang et al.]() for making the preprocessed datasets publically available and also [K. Zhou et al.](https://github.com/KaiyangZhou/pytorch-vsumm-reinforce)
+and [K Zhang et al.]() for making the preprocessed datasets publicly available and also [K. Zhou et al.](https://github.com/KaiyangZhou/pytorch-vsumm-reinforce)
 for code ```vsum_tools.py``` and ```create_split.py``` which we copied from [https://github.com/KaiyangZhou/pytorch-vsumm-reinforce](https://github.com/KaiyangZhou/pytorch-vsumm-reinforce) 
 and slightly modified. 
 
