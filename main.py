@@ -68,7 +68,7 @@ class AONet:
         self.hps = hps
         self.model = None
         self.log_file = None
-        self.verbose = False
+        self.verbose = hps.verbose
 
 
     def fix_keys(self, keys, dataset_name = None):
@@ -377,8 +377,11 @@ def eval_split(hps, splits_filename, data_dir='test'):
         val_fscores.append(val_fscore)
 
         val_fscore_avg = np.mean(val_fscores)
-        video_scores = [["No.", "Video", "F-score"]] + video_scores
-        print_table(video_scores, cell_width=[4,45,5])
+
+        if hps.verbose:
+            video_scores = [["No.", "Video", "F-score"]] + video_scores
+            print_table(video_scores, cell_width=[4,45,5])
+
         print("Avg F-score: ", val_fscore)
         print("")
 
@@ -449,9 +452,10 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser("PyTorch implementation of paper \"Summarizing Videos with Attention\"")
     parser.add_argument('-r', '--root', type=str, default='', help="Project root directory")
-    parser.add_argument('-d', '--dataset', type=str, help="Path to a comma separated list of h5 datasets")
-    parser.add_argument('-s', '--split', type=str, help="Comma separated list of split files.")
+    parser.add_argument('-d', '--datasets', type=str, help="Path to a comma separated list of h5 datasets")
+    parser.add_argument('-s', '--splits', type=str, help="Comma separated list of split files.")
     parser.add_argument('-t', '--train', action='store_true', help="Train")
+    parser.add_argument('-v', '--verbose', action='store_true', help="Prints out more messages")
     parser.add_argument('-o', '--output-dir', type=str, default='data', help="Experiment name")
     args = parser.parse_args()
 

@@ -11,6 +11,7 @@ from torch.autograd import Variable
 class HParameters:
 
     def __init__(self):
+        self.verbose = False
         self.use_cuda = True
         self.cuda_device = 0
         self.max_summary_length = 0.15
@@ -48,10 +49,11 @@ class HParameters:
     def load_from_args(self, args):
         for key in args:
             val = args[key]
-            if isinstance(getattr(self, key), list):
-                val = val.split()
+            if val is not None:
+                if hasattr(self, key) and isinstance(getattr(self, key), list):
+                    val = val.split()
 
-            setattr(self, key, val)
+                setattr(self, key, val)
 
     def __str__(self):
         vars = [attr for attr in dir(self) if not callable(getattr(self,attr)) and not (attr.startswith("__") or attr.startswith("_"))]
@@ -74,7 +76,9 @@ if __name__ == "__main__":
 
     args = {'root': 'root_dir',
             'datasets': 'set1,set2,set3',
-            'splits': 'split1, split2'}
+            'splits': 'split1, split2',
+            'new_param_float': 1.23456
+            }
 
     hps.load_from_args(args)
     print(hps)
