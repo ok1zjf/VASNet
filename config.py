@@ -20,7 +20,7 @@ class HParameters:
         self.lr_epochs = [0]
         self.lr = [0.00005]
 
-        self.epochs_max = 300
+        self.epochs_max = 100
         self.train_batch_size = 1
 
         self.output_dir = 'ex-10'
